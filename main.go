@@ -7,5 +7,5 @@ import (
 
 func main() {
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
-	power4.Handlers()
+	power4.Server()
 }

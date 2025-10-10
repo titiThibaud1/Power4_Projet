@@ -1,22 +1,18 @@
 package power4
 
-import "net/http"
+import (
+	"fmt"
+	"log"
+	"net/http"
+)
 
-func namescreenHandler(w http.ResponseWriter, r *http.Request) {
+func Server() {
+	http.HandleFunc("/", namescreenHandler)
+	http.HandleFunc("/difficulty", difficultyHandler)
+	http.HandleFunc("/play", playHandler)
+	http.HandleFunc("/win", winHandler)
+	http.HandleFunc("/draw", drawHandler)
 
-}
-
-func difficultyHandler(w http.ResponseWriter, r *http.Request) {
-
-}
-
-func playHandler(w http.ResponseWriter, r *http.Request) {
-
-}
-
-func winHandler(w http.ResponseWriter, r *http.Request) {
-
-}
-func drawHandler(w http.ResponseWriter, r *http.Request) {
-
+	fmt.Println("Serveur démarré sur http://localhost:8080")
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
