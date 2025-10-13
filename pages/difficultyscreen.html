@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power 4</title>
+</head>
+<body>
+    <form action="/play" method="post">
+        <p>Joueur 1 : {{ .Player1}}</p>
+        <p>Joueur 2 : {{ .Player2}}</p>
+
+        <input type="radio" id="difEasy" name="difficulty" value="Easy" checked="checked">
+        <label for="difEasy">Easy</label>
+        <input type="radio" id="difMed" name="difficulty" value="Medium">
+        <label for="difMed">Medium</label>
+        <input type="radio" id="difHard" name="difficulty" value="Hard">
+        <label for="difHard">Hard</label>
+
+        <p><button type="submit">Start game</button></p>
+    </form>
+</body>
+</html>
