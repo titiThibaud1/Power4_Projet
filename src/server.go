@@ -16,7 +16,7 @@ type InfosGame struct {
 
 func Server() {
 	var infosGameVar InfosGame
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("/static"))))
+	http.Handle("/static/", http.StripPrefix("/static", http.FileServer(http.Dir("./static"))))
 
 	http.HandleFunc("/", namescreenHandler)
 	http.HandleFunc("/difficulty", func(w http.ResponseWriter, r *http.Request) {
@@ -67,7 +67,7 @@ func playHandler(w http.ResponseWriter, r *http.Request, infosGameVar *InfosGame
 	switch infosGameVar.Difficulty {
 	case "Easy":
 		infosGameVar.Board = [][]int{
-			{1, 0, 0, 0, 0, 0},
+			{1, 0, 0, 2, 0, 0},
 			{0, 0, 0, 0, 0, 0},
 			{0, 0, 0, 0, 0, 0},
 			{0, 0, 0, 0, 0, 0},

@@ -1,0 +1,24 @@
+table {
+  border-collapse: collapse;
+  background-color: #00509d; /* Couleur de la grille */
+  padding: 10px;
+  border-radius: 10px;
+}
+
+td {
+  width: 70px;
+  height: 70px;
+  border: none;
+  background-color: #f0f0f0; /* Couleur des "trous" */
+  border-radius: 50%;
+  margin: 0;
+  padding: 0;
+}
+
+.PlacementP1 {
+    background-color: red;
+}
+
+.PlacementP2 {
+    background-color: yellow;
+}
