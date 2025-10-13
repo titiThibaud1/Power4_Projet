@@ -11,6 +11,7 @@ type InfosGame struct {
 	Player1    string
 	Player2    string
 	Difficulty string
+	ArrowLen   int
 	Board      [][]int
 }
 
@@ -67,7 +68,7 @@ func playHandler(w http.ResponseWriter, r *http.Request, infosGameVar *InfosGame
 	switch infosGameVar.Difficulty {
 	case "Easy":
 		infosGameVar.Board = [][]int{
-			{1, 0, 0, 2, 0, 0},
+			{0, 0, 0, 0, 0, 0},
 			{0, 0, 0, 0, 0, 0},
 			{0, 0, 0, 0, 0, 0},
 			{0, 0, 0, 0, 0, 0},
@@ -75,6 +76,7 @@ func playHandler(w http.ResponseWriter, r *http.Request, infosGameVar *InfosGame
 			{0, 0, 0, 0, 0, 0},
 			{0, 0, 0, 0, 0, 0},
 		}
+		infosGameVar.ArrowLen = 6
 	case "Medium":
 		infosGameVar.Board = [][]int{
 			{0, 0, 0, 0, 0, 0},
@@ -87,6 +89,7 @@ func playHandler(w http.ResponseWriter, r *http.Request, infosGameVar *InfosGame
 			{0, 0, 0, 0, 0, 0},
 			{0, 0, 0, 0, 0, 0},
 		}
+		infosGameVar.ArrowLen = 6
 	case "Hard":
 		infosGameVar.Board = [][]int{
 			{0, 0, 0, 0, 0, 0, 0},
@@ -98,6 +101,7 @@ func playHandler(w http.ResponseWriter, r *http.Request, infosGameVar *InfosGame
 			{0, 0, 0, 0, 0, 0, 0},
 			{0, 0, 0, 0, 0, 0, 0},
 		}
+		infosGameVar.ArrowLen = 7
 	}
 
 	tmpl, err := template.ParseFiles("pages/playscreen.html")

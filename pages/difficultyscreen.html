@@ -7,8 +7,8 @@
 </head>
 <body>
     <form action="/play" method="post">
-        <p>Joueur 1 : {{ .Player1}}</p>
-        <p>Joueur 2 : {{ .Player2}}</p>
+        <p name="Player1">Joueur 1 : {{ .Player1}}</p>
+        <p name="Player2">Joueur 2 : {{ .Player2}}</p>
 
         <input type="radio" id="difEasy" name="difficulty" value="Easy" checked="checked">
         <label for="difEasy">Easy</label>

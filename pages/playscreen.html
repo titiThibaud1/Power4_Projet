@@ -8,7 +8,32 @@
 </head>
 <body>
     <h2>Difficulté : {{ .Difficulty}}</h2>
-    <table>
+    <p name="Player1">{{ .Player1}}</p>
+    <p name="Player2">{{ .Player2}}</p>
+    <form action="/difficulty" method="post">
+        <table>
+            <tr class="ColChoise">
+                {{if eq .ArrowLen 6}}
+                <td><button type="submit" class="PlayTurn" value="Col1">↓</button></td>
+                <td><button type="submit" class="PlayTurn" value="Col2">↓</button></td>
+                <td><button type="submit" class="PlayTurn" value="Col3">↓</button></td>
+                <td><button type="submit" class="PlayTurn" value="Col4">↓</button></td>
+                <td><button type="submit" class="PlayTurn" value="Col5">↓</button></td>
+                <td><button type="submit" class="PlayTurn" value="Col6">↓</button></td>
+                {{else}}
+                <td><button type="submit" class="PlayTurn" value="Col1">↓</button></td>
+                <td><button type="submit" class="PlayTurn" value="Col2">↓</button></td>
+                <td><button type="submit" class="PlayTurn" value="Col3">↓</button></td>
+                <td><button type="submit" class="PlayTurn" value="Col4">↓</button></td>
+                <td><button type="submit" class="PlayTurn" value="Col5">↓</button></td>
+                <td><button type="submit" class="PlayTurn" value="Col6">↓</button></td>
+                <td><button type="submit" class="PlayTurn" value="Col7">↓</button></td>
+                {{end}}
+            </tr>
+        </table>
+    </form>
+    <p></p>
+    <table class="PlayArea">
         {{range .Board}}
         <tr>
             {{range .}}
