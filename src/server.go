@@ -47,10 +47,8 @@ func namescreenHandler(w http.ResponseWriter, r *http.Request) {
 
 // Route /difficulty
 func difficultyHandler(w http.ResponseWriter, r *http.Request, infosGameVar *InfosGame) {
-	infosGameVar = &InfosGame{
-		Player1: r.FormValue("Player1"),
-		Player2: r.FormValue("Player2"),
-	}
+	infosGameVar.Player1 = r.FormValue("Player1")
+	infosGameVar.Player2 = r.FormValue("Player2")
 
 	tmpl, err := template.ParseFiles("pages/difficultyscreen.html")
 	if err != nil {
@@ -62,9 +60,7 @@ func difficultyHandler(w http.ResponseWriter, r *http.Request, infosGameVar *Inf
 
 // Route /play
 func playHandler(w http.ResponseWriter, r *http.Request, infosGameVar *InfosGame) {
-	infosGameVar = &InfosGame{
-		Difficulty: r.FormValue("difficulty"),
-	}
+	infosGameVar.Difficulty = r.FormValue("difficulty")
 	switch infosGameVar.Difficulty {
 	case "Easy":
 		infosGameVar.Board = [][]int{
