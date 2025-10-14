@@ -10,7 +10,7 @@
     <h2>Difficulté : {{ .Difficulty}}</h2>
     <p name="Player1">{{ .Player1}}</p>
     <p name="Player2">{{ .Player2}}</p>
-    <form action="/difficulty" method="post">
+    <form action="/playTurns" method="post">
         <table>
             <tr class="ColChoise">
                 {{if eq .ArrowLen 6}}

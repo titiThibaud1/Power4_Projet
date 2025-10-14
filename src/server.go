@@ -26,6 +26,9 @@ func Server() {
 	http.HandleFunc("/play", func(w http.ResponseWriter, r *http.Request) {
 		playHandler(w, r, &infosGameVar)
 	})
+	http.HandleFunc("/playTurns", func(w http.ResponseWriter, r *http.Request) {
+		playTurnsHandler(w, r, &infosGameVar)
+	})
 	http.HandleFunc("/win", winHandler)
 	http.HandleFunc("/draw", drawHandler)
 
@@ -85,6 +88,7 @@ func playHandler(w http.ResponseWriter, r *http.Request, infosGameVar *InfosGame
 			{0, 0, 0, 0, 0, 0},
 			{0, 0, 0, 0, 0, 0},
 		}
+		infosGameVar.Difficulty = "Medium"
 		infosGameVar.ArrowLen = 6
 	case "Hard":
 		infosGameVar.Board = [][]int{
@@ -97,8 +101,20 @@ func playHandler(w http.ResponseWriter, r *http.Request, infosGameVar *InfosGame
 			{0, 0, 0, 0, 0, 0, 0},
 			{0, 0, 0, 0, 0, 0, 0},
 		}
+		infosGameVar.Difficulty = "Hard"
 		infosGameVar.ArrowLen = 7
 	}
+
+	tmpl, err := template.ParseFiles("pages/playscreen.html")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	tmpl.Execute(w, infosGameVar)
+}
+
+func playTurnsHandler(w http.ResponseWriter, r *http.Request, infosGameVar *InfosGame) {
 
 	tmpl, err := template.ParseFiles("pages/playscreen.html")
 
