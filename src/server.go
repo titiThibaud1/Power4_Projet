@@ -8,15 +8,19 @@ import (
 )
 
 type InfosGame struct {
-	Player1    string
-	Player2    string
-	Difficulty string
-	ArrowLen   int
-	Board      [][]int
+	Player1       string
+	Player2       string
+	CurrentPlayer string
+	WaitingPlayer string
+	Difficulty    string
+	ArrowLen      int
+	Board         [][]int
 }
 
+var NbTurns int
+var infosGameVar InfosGame
+
 func Server() {
-	var infosGameVar InfosGame
 	http.Handle("/static/", http.StripPrefix("/static", http.FileServer(http.Dir("./static"))))
 
 	http.HandleFunc("/", namescreenHandler)
@@ -63,6 +67,7 @@ func difficultyHandler(w http.ResponseWriter, r *http.Request, infosGameVar *Inf
 
 // Route /play
 func playHandler(w http.ResponseWriter, r *http.Request, infosGameVar *InfosGame) {
+	NbTurns = 0
 	infosGameVar.Difficulty = r.FormValue("difficulty")
 	switch infosGameVar.Difficulty {
 	case "Easy":
@@ -115,7 +120,8 @@ func playHandler(w http.ResponseWriter, r *http.Request, infosGameVar *InfosGame
 }
 
 func playTurnsHandler(w http.ResponseWriter, r *http.Request, infosGameVar *InfosGame) {
-
+	NbTurns++
+	GamePower4(NbTurns, infosGameVar)
 	tmpl, err := template.ParseFiles("pages/playscreen.html")
 
 	if err != nil {
@@ -138,10 +144,17 @@ func drawHandler(w http.ResponseWriter, r *http.Request) {
 // ==================================================================================
 
 func NewGame() {
-	// var Hor et Ver
+
 }
 
-func gamePower4() {
+func GamePower4(NbTurn int, infosGameVar *InfosGame) {
+	if NbTurn%2 != 0 {
+		infosGameVar.CurrentPlayer = "Player1"
+		infosGameVar.WaitingPlayer = "Player2"
+	} else {
+		infosGameVar.CurrentPlayer = "Player2"
+		infosGameVar.WaitingPlayer = "Player1"
+	}
 
 }
 

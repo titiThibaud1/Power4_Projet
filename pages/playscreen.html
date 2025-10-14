@@ -50,5 +50,45 @@
         </tr>
         {{end}}
     </table>
+    <h2>
+        Au tour de :
+        <p class="NameCurrentPlayer">
+            {{if eq .CurrentPlayer "Player1"}}
+                {{ .Player1}}
+                <style>
+                    .NameCurrentPlayer {
+                        color: red;
+                    }
+                </style>
+            {{else}}
+                {{ .Player2}}
+                <style>
+                    .NameCurrentPlayer {
+                        color: yellow;
+                    }
+                </style>
+            {{end}}
+        </p>
+    </h2>
+    <h2>
+        Suivant :
+        <p class="NameWaitingPlayer">
+            {{if eq .WaitingPlayer "Player1"}}
+                {{ .Player1}}
+                <style>
+                    .NameWaitingPlayer {
+                        color: red;
+                    }
+                </style>
+            {{else}}
+                {{ .Player2}}
+                <style>
+                    .NameWaitingPlayer {
+                        color: yellow;
+                    }
+                </style>
+            {{end}}
+        </p>
+    </h2>
 </body>
 </html>
