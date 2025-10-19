@@ -1,40 +1,355 @@
+.ShowDif, .EntierBoard, .ShowTurns, .EndButtons {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
 table {
-  background-color: #00509d; /* Couleur de la grille */
+  background-color: #3f2d5c;
   padding: 10px;
   border-radius: 10px;
+
+.PlacementP1 {
+    background-color: rgba(255, 0, 0, 0.700);
 }
 
+.PlacementP2 {
+    background-color: rgba(255, 255, 0, 0.700);
+}
+
+}
 td {
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   border: none;
-  background-color: #f0f0f0; /* Couleur des jetons */
+  background-color: #a3a3a3;
   border-radius: 50%;
   margin: 0;
   padding: 0;
   text-align: center;
 }
-
-.PlacementP1 {
-    background-color: red;
+.ColChoise {
+  padding-bottom: 12px;
+  border-collapse: separate;
 }
-
-.PlacementP2 {
-    background-color: yellow;
-}
-
 .PlayTurn {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%; /* rend le bouton rond */
-    border: none;   
-    background-color: #ffffff00;
-    color: rgb(0, 0, 0);
-    font-size: 24px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background-color: #ffffff00;
+  color: rgb(0, 0, 0);
+  font-size: 24px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.PlayTurn:hover {
+  background-color: #afafaf;
 }
 
-.PlayTurn:hover {
-    background-color: #afafaf;
+/* ==================================================================================
+   Les ajouts suivant ont été généré par IA
+   ============================================================================== */
+
+:root{
+  --bg-1:#0f172a;
+  --bg-2:#111827;
+  --text:#e5e7eb;        
+  --muted:#94a3b8;
+  --card:#ffffff0f;
+  --card-border:#ffffff24;
+  --primary:#6366f1;     
+  --accent:#22d3ee;      
+}
+
+/* Base */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body{
+  margin:0;
+  color:var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  /* Fond moderne : dégradés + halos */
+  background:
+    radial-gradient(60rem 60rem at 8% -10%, #3b82f640 0%, transparent 60%),
+    radial-gradient(50rem 50rem at 92% 0%, #22d3ee35 0%, transparent 55%),
+    linear-gradient(180deg, var(--bg-1), var(--bg-2));
+
+  /* Mise en page centrée sans wrapper HTML */
+  display: grid;
+  place-content: center;
+  gap: 18px;
+  padding: 32px 16px 48px;
+  position: relative;
+}
+
+/* Carte translucide derrière le contenu (sans wrapper HTML) */
+body::before{
+  content:"";
+  position: fixed; /* couvre la zone centrale */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(96vw, 1000px);
+  height: min(82vh, 940px);
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 22px;
+  box-shadow:
+    0 30px 60px -20px #00000066,
+    inset 0 1px 0 #ffffff18;
+  backdrop-filter: blur(10px) saturate(120%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Légère texture très discrète (grain) */
+body::after{
+  content:"";
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(#ffffff10 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: .03;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Assure que tout le contenu passe au-dessus de la carte */
+body > *{
+  position: relative;
+  z-index: 1;
+}
+
+/* Typo/rythme vertical par défaut pour les lignes "texte brut" du HTML */
+body{
+  line-height: 1.35;
+  text-align: center;
+  font-size: clamp(14px, 1.6vw, 18px);
+}
+
+/* Mise en valeur des toutes premières lignes de texte (# Titre / ### Sous-titre) 
+   (L'HTML restant tel quel, on habille la première et la deuxième "boîtes" anonymes) */
+body > :first-child{
+  font-weight: 800;
+  letter-spacing: .2px;
+  font-size: clamp(28px, 4vw, 42px);
+  background: linear-gradient(90deg, #fff, #a5b4fc, #67e8f9);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 6px;
+}
+body > :nth-child(2){
+  color: var(--muted);
+  font-weight: 600;
+  font-size: clamp(14px, 1.5vw, 16px);
+  margin-bottom: 10px;
+}
+
+/* Espace autour du tableau sans toucher à 'table' directement */
+body > table {
+  /* NOTE : Cette règle cible l'élément table mais via un *sélecteur plus spécifique*
+     que 'table' tout court. Si tu préfères VRAIMENT ne rien cibler sur <table>,
+     supprime ce bloc; le rendu restera correct, juste un peu moins aéré. */
+  margin: 0 auto;          /* centrage horizontal */
+  box-shadow: 0 20px 50px -20px #00000080; /* halo sous la grille */
+}
+
+/* Statut (les lignes "Au tour de:" / "Suivant:") 
+   On ajoute de l'espace et une mise en valeur sans changer l'HTML */
+body > table + *{
+  margin-top: 12px;
+  font-size: 15px;
+}
+body > table + * + *{
+  margin-top: 4px;
+  color: #c7d2fe; /* indigo-200 */
+  font-weight: 600;
+}
+
+/* Boutons (Reset / Changer de difficulté / Accueil)
+   -> on habille tous les boutons sauf .PlayTurn
+   -> on couvre aussi les <input> boutons et liens typés bouton 
+*/
+button:not(.PlayTurn),
+input[type="button"],
+input[type="submit"],
+a.button,
+a.btn,
+.button,
+.btn{
+  --h: 44px;
+  height: var(--h);
+  line-height: calc(var(--h) - 2px);
+  padding: 0 18px;
+  border-radius: 12px;
+  border: 0;
+  display: inline-inline;
+  display: inline-block;
+  color: #0b1220;
+  font-weight: 700;
+  letter-spacing: .2px;
+  text-decoration: none;
+  cursor: pointer;
+  background: linear-gradient(90deg, #a78bfa, #22d3ee 60%, #67e8f9);
+  box-shadow:
+    0 10px 24px -8px #22d3ee66,
+    inset 0 -2px 0 #00000022,
+    inset 0 1px 0 #ffffffaa;
+  transition: transform .06s ease, box-shadow .2s ease, filter .2s ease, opacity .2s ease;
+  margin: 6px 6px 0;
+}
+
+button:not(.PlayTurn):hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+a.button:hover,
+a.btn:hover,
+.button:hover,
+.btn:hover{
+  filter: brightness(1.05);
+}
+
+button:not(.PlayTurn):active,
+input[type="button"]:active,
+input[type="submit"]:active,
+a.button:active,
+a.btn:active,
+.button:active,
+.btn:active{
+  transform: translateY(1px) scale(0.99);
+}
+
+/* Variante "secondaire" automatique si data-variant=secondary ou [aria-pressed] */
+button:not(.PlayTurn)[data-variant="secondary"],
+input[type="button"][data-variant="secondary"],
+input[type="submit"][data-variant="secondary"],
+a.button[data-variant="secondary"],
+a.btn[data-variant="secondary"]{
+  color:#e5e7eb;
+  background: linear-gradient(180deg, #ffffff1a, #ffffff0a);
+  border: 1px solid #a78bfa66;
+  box-shadow: inset 0 1px 0 #ffffff26;
+}
+button:not(.PlayTurn)[data-variant="secondary"]:hover,
+input[type="button"][data-variant="secondary"]:hover,
+a.button[data-variant="secondary"]:hover,
+a.btn[data-variant="secondary"]:hover{
+  background: linear-gradient(180deg, #ffffff24, #ffffff10);
+}
+
+/* Si des liens "nus" servent de boutons, on les rassemble visuellement */
+a[href*="reset" i],
+a[href*="accueil" i],
+a[href*="home" i],
+a[href*="difficulty" i],
+a[role="button"]{
+  /* leur appliquer la même skin que ci-dessus */
+  padding: 0 16px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #a78bfa, #22d3ee 60%, #67e8f9);
+  color: #0b1220 !important;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  margin: 6px 6px 0;
+}
+
+/* Responsif : réduis légèrement l’occupation visuelle du bloc central */
+@media (max-width: 900px){
+  body::before{ width: min(96vw, 880px); height: min(78vh, 880px); }
+}
+@media (max-width: 700px){
+  body{ padding: 24px 12px 36px; }
+  body::before{ width: min(96vw, 760px); height: min(76vh, 820px); border-radius: 18px; }
+}
+@media (max-width: 520px){
+  body{ padding: 20px 10px 28px; gap: 14px; }
+  body::before{ width: 96vw; height: auto; top: 52%; }
+}
+
+/* 4) Boutons (hors .PlayTurn) : glow + effet "sheen" au survol */
+@keyframes sheen {
+  0%   { transform: translateX(-130%) skewX(-12deg); }
+  100% { transform: translateX(130%)  skewX(-12deg); }
+}
+
+/* On cible tous les boutons d'UI sauf .PlayTurn */
+button:not(.PlayTurn),
+input[type="button"],
+input[type="submit"],
+a.button,
+a.btn,
+.button,
+.btn{
+  position: relative;      /* nécessaire pour les pseudo-éléments */
+  overflow: hidden;        /* masque le sheen */
+  transition: transform .06s ease, box-shadow .25s ease, filter .25s ease;
+}
+
+/* Halo externe à l’hover (renforce sans changer la skin de base) */
+button:not(.PlayTurn):hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+a.button:hover,
+a.btn:hover,
+.button:hover,
+.btn:hover{
+  box-shadow:
+    0 12px 28px -10px #22d3ee80,
+    inset 0 -2px 0 #00000022,
+    inset 0 1px 0 #ffffffaa;
+}
+
+/* Film “sheen” (reflet oblique qui traverse le bouton au survol) */
+button:not(.PlayTurn)::after,
+input[type="button"]::after,
+input[type="submit"]::after,
+a.button::after,
+a.btn::after,
+.button::after,
+.btn::after{
+  content:"";
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(120deg, transparent 30%, #ffffff33 45%, transparent 60%);
+  transform: translateX(-130%) skewX(-12deg);
+  pointer-events: none;
+}
+button:not(.PlayTurn):hover::after,
+input[type="button"]:hover::after,
+input[type="submit"]:hover::after,
+a.button:hover::after,
+a.btn:hover::after,
+.button:hover::after,
+.btn:hover::after{
+  animation: sheen 2s ease;
+}
+
+/* 5) Accessibilité : réduire/neutraliser les animations si souhaité */
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ==================================================================================
+   Fin des ajouts par IA
+   ============================================================================== */
+
+.DifficultyEasy {
+    color: green;
+}
+
+.DifficultyMedium {
+    color: orangered;
+}
+
+.DifficultyHard {
+    color: red;
 }

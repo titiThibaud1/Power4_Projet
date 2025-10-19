@@ -37,10 +37,10 @@ func Server() {
 		winHandler(w, r, &infosGameVar)
 	})
 	http.HandleFunc("/draw", func(w http.ResponseWriter, r *http.Request) {
-		winHandler(w, r, &infosGameVar)
+		drawHandler(w, r, &infosGameVar)
 	})
 
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+	http.Handle("/static/", http.StripPrefix("/static", http.FileServer(http.Dir("static"))))
 	fmt.Println("Serveur démarré sur http://localhost:8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
@@ -59,8 +59,10 @@ func namescreenHandler(w http.ResponseWriter, r *http.Request) {
 
 // Route /difficulty
 func difficultyHandler(w http.ResponseWriter, r *http.Request, infosGameVar *InfosGame) {
-	infosGameVar.Player1 = r.FormValue("Player1")
-	infosGameVar.Player2 = r.FormValue("Player2")
+	if r.FormValue("Player1") != "" && r.FormValue("Player2") != "" {
+		infosGameVar.Player1 = r.FormValue("Player1")
+		infosGameVar.Player2 = r.FormValue("Player2")
+	}
 
 	tmpl, err := template.ParseFiles("pages/difficultyscreen.html")
 	if err != nil {
@@ -75,7 +77,11 @@ func playHandler(w http.ResponseWriter, r *http.Request, infosGameVar *InfosGame
 	NbTurns = 0
 	infosGameVar.CurrentPlayer = 2
 	infosGameVar.WaitingPlayer = 1
-	infosGameVar.Difficulty = r.FormValue("difficulty")
+
+	if r.FormValue("difficulty") != "" {
+		infosGameVar.Difficulty = r.FormValue("difficulty")
+	}
+
 	switch infosGameVar.Difficulty {
 	case "Easy":
 		infosGameVar.Board = [][]int{

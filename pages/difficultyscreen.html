@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
     <title>Power 4</title>
 </head>
 <body>
@@ -11,11 +12,11 @@
         <p name="Player2">Joueur 2 : {{ .Player2}}</p>
 
         <input type="radio" id="difEasy" name="difficulty" value="Easy" checked="checked">
-        <label for="difEasy">Easy</label>
+        <label for="difEasy" class="DifficultyEasy">Easy</label>
         <input type="radio" id="difMed" name="difficulty" value="Medium">
-        <label for="difMed">Medium</label>
+        <label for="difMed" class="DifficultyMedium">Medium</label>
         <input type="radio" id="difHard" name="difficulty" value="Hard">
-        <label for="difHard">Hard</label>
+        <label for="difHard" class="DifficultyHard">Hard</label>
 
         <p><button type="submit">Start game</button></p>
     </form>

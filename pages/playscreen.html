@@ -7,52 +7,49 @@
     <title>Power 4</title>
 </head>
 <body>
-    <h2>Difficulté : {{ .Difficulty}}</h2>
-    <p name="Player1">{{ .Player1}}</p>
-    <p name="Player2">{{ .Player2}}</p>
-    <form action="/playTurns" method="post">
-        <table>
-            <tr class="ColChoise">
-                {{if eq .ArrowLen 6}}
-                <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col0">↓</button></td>
-                <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col1">↓</button></td>
-                <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col2">↓</button></td>
-                <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col3">↓</button></td>
-                <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col4">↓</button></td>
-                <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col5">↓</button></td>
-                {{else}}
-                <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col0">↓</button></td>
-                <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col1">↓</button></td>
-                <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col2">↓</button></td>
-                <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col3">↓</button></td>
-                <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col4">↓</button></td>
-                <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col5">↓</button></td>
-                <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col6">↓</button></td>
-                {{end}}
-            </tr>
-        </table>
-    </form>
-    <p></p>
-    <table class="PlayArea">
-        {{range .Board}}
-        <tr>
-            {{range .}}
-                {{if eq . 1}}
-                <td class="PlacementP1"> </td>
-                {{else}}
-                    {{if eq . 2}}
-                    <td class="PlacementP2"> </td>
+    <h2 class="ShowDif">Difficulté : {{ .Difficulty}}</h2>
+    <section class="EntierBoard">
+        <table class="PlayArea">
+            <form action="/playTurns" method="post">
+                <tr class="ColChoise">
+                    {{if eq .ArrowLen 6}}
+                    <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col0">↓</button></td>
+                    <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col1">↓</button></td>
+                    <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col2">↓</button></td>
+                    <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col3">↓</button></td>
+                    <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col4">↓</button></td>
+                    <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col5">↓</button></td>
                     {{else}}
-                    <td class="NoPlacement"> </td>
+                    <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col0">↓</button></td>
+                    <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col1">↓</button></td>
+                    <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col2">↓</button></td>
+                    <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col3">↓</button></td>
+                    <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col4">↓</button></td>
+                    <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col5">↓</button></td>
+                    <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col6">↓</button></td>
+                    {{end}}
+                </tr>
+            </form>
+            {{range .Board}}
+            <tr>
+                {{range .}}
+                    {{if eq . 1}}
+                    <td class="PlacementP1"></td>
+                    {{else}}
+                        {{if eq . 2}}
+                        <td class="PlacementP2"></td>
+                        {{else}}
+                        <td class="NoPlacement"></td>
+                        {{end}}
                     {{end}}
                 {{end}}
+            </tr>
             {{end}}
-        </tr>
-        {{end}}
-    </table>
-    <h2>
-        Au tour de :
-        <p class="NameCurrentPlayer">
+        </table>
+    </section>
+    <h2 class="ShowTurns">
+        Au tour de : 
+        <div class="NameCurrentPlayer">
             {{if eq .CurrentPlayer 2}}
                 {{ .Player1}}
                 <style>
@@ -68,11 +65,10 @@
                     }
                 </style>
             {{end}}
-        </p>
-    </h2>
-    <h2>
+        </div>
+        <!-- Rajout du joueur en attente (pas obligatoire et pas ouf visuellement)
         Suivant :
-        <p class="NameWaitingPlayer">
+        <div class="NameWaitingPlayer">
             {{if eq .WaitingPlayer 2}}
                 {{ .Player1 }}
                 <style>
@@ -88,7 +84,19 @@
                     }
                 </style>
             {{end}}
-        </p>
+        </div> 
+        -->
     </h2>
+    <div class="EndButtons">
+        <form action="/play" method="post">
+            <button class="EndButton" type="submit">Reset</button>
+        </form>
+        <form action="/difficulty" method="post">
+            <button class="EndButton" type="submit">Changer de difficulté</button>
+        </form>
+        <form action="/" method="post">
+            <button class="EndButton" type="submit">Acceuil</button>
+        </form>
+    </div>
 </body>
 </html>
