@@ -48,7 +48,7 @@
         </table>
     </section>
     <h2 class="ShowTurns">
-        Au tour de : 
+        Player's turn : 
         <div class="NameCurrentPlayer">
             {{if eq .CurrentPlayer 2}}
                 {{ .Player1}}
@@ -67,7 +67,7 @@
             {{end}}
         </div>
         <!-- Rajout du joueur en attente (pas obligatoire et pas ouf visuellement)
-        Suivant :
+        Next :
         <div class="NameWaitingPlayer">
             {{if eq .WaitingPlayer 2}}
                 {{ .Player1 }}
@@ -92,10 +92,10 @@
             <button class="EndButton" type="submit">Reset</button>
         </form>
         <form action="/difficulty" method="post">
-            <button class="EndButton" type="submit">Changer de difficulté</button>
+            <button class="EndButton" type="submit">Change difficulty</button>
         </form>
         <form action="/" method="post">
-            <button class="EndButton" type="submit">Acceuil</button>
+            <button class="EndButton" type="submit">Home</button>
         </form>
     </div>
 </body>
