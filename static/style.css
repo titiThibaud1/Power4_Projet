@@ -4,7 +4,7 @@
   align-items: center;
 }
 table {
-  background-color: #3f2d5c;
+  background-color: #4d4d4d91;
   padding: 10px;
   border-radius: 10px;
 
@@ -47,7 +47,7 @@ td {
 }
 
 /* ==================================================================================
-   Les ajouts suivant ont été généré par IA
+   Les points suivant ont été générés par IA
    ============================================================================== */
 
 :root{
@@ -339,7 +339,7 @@ a.btn:hover::after,
 }
 
 /* ==================================================================================
-   Fin des ajouts par IA
+   Fin des points générés par IA
    ============================================================================== */
 
 .DifficultyEasy {
@@ -352,4 +352,9 @@ a.btn:hover::after,
 
 .DifficultyHard {
     color: red;
+}
+
+.PlayerNames {
+  background-color: rgba(141, 141, 141, 0.737);
+  color: rgb(0, 0, 0);
 }
