@@ -16,7 +16,7 @@ Si, alors que toutes les cases de la grille de jeu sont remplies, aucun des deux
 
 Nous devons créer un jeux de Puissance 4 en language Golang et HTML.
 
-Ce jeu doit respecter les conditions suivantes :
+Ce jeu doit respecter les conditions données suivantes :
 
 <img width="698" height="450" alt="image" src="https://github.com/user-attachments/assets/d3ee69c3-4b9f-4211-a293-79409aeaa008" />
 
@@ -41,12 +41,13 @@ Ce jeu doit respecter les conditions suivantes :
 - Le premier joueur choisi une colone sur laquelle il va jouer grace aux flèches en haut de chaque colone
 - Une fois joué, c'est au tour du deuxième joueur et ainsi de suite
 - Jouez votre meilleure stratégie
-- Une fois un vainceur désigné ou la grille étant remplie, vous êtes redirigé sur un écran de victoire ou d'égalité.
+- Une fois un vainceur désigné ou la grille étant remplie, vous êtes redirigé sur un écran de fin en fonction du résultat de la partie.
 - Vous disposez, comme pendant le déroulement de la partie de boutons permetant chacun de recommencer, changer la difficulté ou de revenir sur l'écran d'accueil
 - Faites autant de parties que vous le souhaitez
 
 
 ## Présentation du travail réalisé
+
 
 ### Page d'accueil
 Sur la page d'accueil vous pouvez y entrer les nom des 2 joueurs qui vont s'affronter sur le jeu de Puissance 4.
@@ -69,9 +70,7 @@ Sur la page de jeu, vous avez en haut de l'écran un rappel de la difficulté da
 
 Vous avez également une grille de jeu, qui en cliquant sur les bouton en haut de chaque colone, permet de place un jeton de la couleur du joueur actuel dans la case ibre la plus basse de la colone en question.
 
-Si un joueur alligne 4 jeton de la même couleur sur la grille, vous êtes redirigé vers une page de victoire.
-
-Si la grille est complète sans qu'un joueur ait alligné 4 jetons de la même couleur, vous êtes redirigé vers une page d'égalité.
+Si un joueur alligne 4 jeton de la même couleur ou que la grille est pleine, vous êtes redirigé vers une page de fin.
 
 Enfin, en bas de la page vous avez des bouton permettant chacun de :
 
@@ -80,7 +79,7 @@ Enfin, en bas de la page vous avez des bouton permettant chacun de :
 - "Home"                -->     Revenir sur l'écran d'accueil
 
 
-### Page de victoire / égalité
+### Page de fin
 En cas de victoire d'un joueur, vous avez à l'écran le pseudo du gagnant ansi que les 3 même boutons que précedement
 En cas d'égalité, seulement un message "Draw" est affiché, toujours avec les 3 boutons.
 
