@@ -111,20 +111,9 @@ func playTurnsHandler(w http.ResponseWriter, r *http.Request, infosGameVar *Info
 	tmpl.Execute(w, infosGameVar)
 }
 
-// Route /win
-func winHandler(w http.ResponseWriter, infosGameVar *InfosGame) {
-	tmpl, err := template.ParseFiles("pages/winscreen.html")
-
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	tmpl.Execute(w, infosGameVar)
-}
-
-// Route /draw
-func drawHandler(w http.ResponseWriter, infosGameVar *InfosGame) {
-	tmpl, err := template.ParseFiles("pages/drawscreen.html")
+// Route /end
+func endHandler(w http.ResponseWriter, infosGameVar *InfosGame) {
+	tmpl, err := template.ParseFiles("pages/endscreen.html")
 
 	if err != nil {
 		log.Fatal(err)

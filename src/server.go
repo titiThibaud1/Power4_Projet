@@ -32,11 +32,8 @@ func Server() {
 	http.HandleFunc("/playTurns", func(w http.ResponseWriter, r *http.Request) {
 		playTurnsHandler(w, r, &infosGameVar)
 	})
-	http.HandleFunc("/win", func(w http.ResponseWriter, r *http.Request) {
-		winHandler(w, &infosGameVar)
-	})
-	http.HandleFunc("/draw", func(w http.ResponseWriter, r *http.Request) {
-		drawHandler(w, &infosGameVar)
+	http.HandleFunc("/end", func(w http.ResponseWriter, r *http.Request) {
+		endHandler(w, &infosGameVar)
 	})
 
 	http.Handle("/static/", http.StripPrefix("/static", http.FileServer(http.Dir("static"))))
