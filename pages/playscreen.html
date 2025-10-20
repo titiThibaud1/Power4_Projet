@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Power 4</title>
+</head>
+<body>
+    <h2 class="ShowDif">Difficulté : {{ .Difficulty}}</h2>
+    <section class="EntierBoard">
+        <table class="PlayArea">
+            <form action="/playTurns" method="post">
+                <tr class="ColChoise">
+                    {{if eq .ArrowLen 6}}
+                    <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col0">↓</button></td>
+                    <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col1">↓</button></td>
+                    <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col2">↓</button></td>
+                    <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col3">↓</button></td>
+                    <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col4">↓</button></td>
+                    <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col5">↓</button></td>
+                    {{else}}
+                    <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col0">↓</button></td>
+                    <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col1">↓</button></td>
+                    <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col2">↓</button></td>
+                    <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col3">↓</button></td>
+                    <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col4">↓</button></td>
+                    <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col5">↓</button></td>
+                    <td><button type="submit" class="PlayTurn" name="PlayTurn" value="Col6">↓</button></td>
+                    {{end}}
+                </tr>
+            </form>
+            {{range .Board}}
+            <tr>
+                {{range .}}
+                    {{if eq . 1}}
+                    <td class="PlacementP1"></td>
+                    {{else}}
+                        {{if eq . 2}}
+                        <td class="PlacementP2"></td>
+                        {{else}}
+                        <td class="NoPlacement"></td>
+                        {{end}}
+                    {{end}}
+                {{end}}
+            </tr>
+            {{end}}
+        </table>
+    </section>
+    <h2 class="ShowTurns">
+        Player's turn : 
+        <div class="NameCurrentPlayer">
+            {{if eq .CurrentPlayer 2}}
+                {{ .Player1}}
+                <style>
+                    .NameCurrentPlayer {
+                        color: red;
+                    }
+                </style>
+            {{else}}
+                {{ .Player2}}
+                <style>
+                    .NameCurrentPlayer {
+                        color: yellow;
+                    }
+                </style>
+            {{end}}
+        </div>
+        <!-- Rajout du joueur en attente (pas obligatoire et pas ouf visuellement)
+        Next :
+        <div class="NameWaitingPlayer">
+            {{if eq .WaitingPlayer 2}}
+                {{ .Player1 }}
+                <style>
+                    .NameWaitingPlayer {
+                        color: red;
+                    }
+                </style>
+            {{else}}
+                {{ .Player2 }}
+                <style>
+                    .NameWaitingPlayer {
+                        color: yellow;
+                    }
+                </style>
+            {{end}}
+        </div> 
+        -->
+    </h2>
+    <div class="EndButtons">
+        <form action="/play" method="post">
+            <button class="EndButton" type="submit">Reset</button>
+        </form>
+        <form action="/difficulty" method="post">
+            <button class="EndButton" type="submit">Change difficulty</button>
+        </form>
+        <form action="/" method="post">
+            <button class="EndButton" type="submit">Home</button>
+        </form>
+    </div>
+</body>
+</html>
