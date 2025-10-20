@@ -7,6 +7,7 @@ table {
   background-color: #4d4d4d91;
   padding: 10px;
   border-radius: 10px;
+}
 
 .PlacementP1 {
     background-color: rgba(255, 0, 0, 0.700);
@@ -16,7 +17,6 @@ table {
     background-color: rgba(255, 255, 0, 0.700);
 }
 
-}
 td {
   width: 60px;
   height: 60px;
