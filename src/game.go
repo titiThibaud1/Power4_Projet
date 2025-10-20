@@ -59,7 +59,7 @@ func checkWin(w http.ResponseWriter, r *http.Request, infoGameVar *InfosGame) {
 				} else {
 					infoGameVar.Winner = infoGameVar.Player2
 				}
-				http.Redirect(w, r, "/win", http.StatusSeeOther)
+				http.Redirect(w, r, "/end", http.StatusSeeOther)
 			}
 
 			if i+3 <= xInit && //Verif vertical
@@ -72,7 +72,7 @@ func checkWin(w http.ResponseWriter, r *http.Request, infoGameVar *InfosGame) {
 				} else {
 					infoGameVar.Winner = infoGameVar.Player2
 				}
-				http.Redirect(w, r, "/win", http.StatusSeeOther)
+				http.Redirect(w, r, "/end", http.StatusSeeOther)
 			}
 
 			if i-3 >= 0 && j-3 >= 0 && //Verif diago bas droit --> haut gauche
@@ -85,7 +85,7 @@ func checkWin(w http.ResponseWriter, r *http.Request, infoGameVar *InfosGame) {
 				} else {
 					infoGameVar.Winner = infoGameVar.Player2
 				}
-				http.Redirect(w, r, "/win", http.StatusSeeOther)
+				http.Redirect(w, r, "/end", http.StatusSeeOther)
 			}
 
 			if i-3 >= 0 && j+3 <= yInit && //Verif diago bas gauche --> haut droite
@@ -98,7 +98,7 @@ func checkWin(w http.ResponseWriter, r *http.Request, infoGameVar *InfosGame) {
 				} else {
 					infoGameVar.Winner = infoGameVar.Player2
 				}
-				http.Redirect(w, r, "/win", http.StatusSeeOther)
+				http.Redirect(w, r, "/end", http.StatusSeeOther)
 			}
 		}
 	}
@@ -111,6 +111,7 @@ func checkWin(w http.ResponseWriter, r *http.Request, infoGameVar *InfosGame) {
 		}
 	}
 	if VerifDraw {
-		http.Redirect(w, r, "/draw", http.StatusSeeOther)
+		infoGameVar.Winner = "Draw"
+		http.Redirect(w, r, "/end", http.StatusSeeOther)
 	}
 }

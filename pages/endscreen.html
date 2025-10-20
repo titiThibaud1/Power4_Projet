@@ -7,7 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>Draw</h2>
+    {{ if eq .Winner "Draw"}}
+        <h2>Draw</h2>
+    {{else}}
+        <h2>winner : {{ .Winner}}</h2>
+    {{end}}
     <form action="/play" method="post">
         <button type="submit">Reset</button>
     </form>
